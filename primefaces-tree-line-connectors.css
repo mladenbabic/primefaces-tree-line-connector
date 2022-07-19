@@ -1,0 +1,89 @@
+/* CSS style with tree node line connectors */
+
+/* Vertical line connector  */
+.ui-tree ul li {
+  margin-left: 7px;
+  position: relative;
+  padding-left: 1px;
+}
+
+/* Horizontal line connector  */
+.ui-tree ul li::before {
+  content: " ";
+  position: absolute;
+  width: 1px;
+  background-color: gray;
+  top: -9px;
+  bottom: -17px;
+  left: 0px;
+}
+
+/* Moves a main root line to down   */
+.ui-tree > ul > li:first-child::before {
+	top: 17px;
+}
+
+/* Removes vertical line from the latest node  */
+.ui-tree ul li:not(:first-child):last-child::before {
+	display: none;
+}
+
+/* Vertical line only for node without siblings |_ */
+.ui-tree ul li:only-child::before {
+  display: list-item;
+  content: " ";
+  position: absolute;
+  width: 1px;
+  background-color: gray;
+  top: -6px;
+  bottom: 7px;
+  height: 22px;
+  left: 0px;
+}
+
+/*  Horizontal line for leaf node  */
+ .ui-tree ul li::after {
+  content: " ";
+  position: absolute;
+  left: 0px;
+  width: 38px;
+  height: 1px;
+  background-color: gray;
+  top: 16px;
+}
+
+/*  Horizontal line for parent node  */
+.ui-tree .ui-treenode-parent::after {
+   content: " ";
+   position: absolute;
+   left: 0px;
+   width: 6px;
+   height: 1px;
+   background-color: gray;
+   top: 16px;
+}
+
+/* Remove horizontal line from the first root node without siblings */
+.ui-tree > ul > li:only-child::after {
+	display:none;
+}
+
+/* Remove vertical line from the first root node without siblings */
+.ui-tree > ul > li:only-child::before {
+	display:none;
+}
+
+/* Overrided expand icon  */
+body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-e:before {
+    content: "\e90e";
+}
+
+/* Overrided expand icon  */
+body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler.ui-icon-triangle-1-s:before {
+	content: "\e910";
+}
+
+/* Remove margin from tree icon */
+body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content .ui-tree-toggler {
+    margin: 0 0 0 0;
+}
